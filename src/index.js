@@ -6,9 +6,9 @@ import router from './routes.js';
 const port = 3020;
 const app = express();
 
+app.use(express.json())
 app.use(cors());
 app.use(router);
-
 
 app.listen(port, ()=>{
     console.log(`Servidor rodando em ${port}`);
