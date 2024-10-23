@@ -2,12 +2,19 @@ import db from '../database/db.js';
 
 async function list (name) {
     let doctors;
-    if(name){
-        doctors = await db`select * from doctors where name like ${"%"+name+"%"} order by name`;
-    }else {
-        doctors = await db`select * from doctors order by name`
+    try {
+        if(name){
+            doctors = await db`select * from doctors where name like ${"%"+name+"%"} order by name`;
+            if(doctors.length<1){
+                doctors='Médico não encontrado'
+            }
+        }else {
+            doctors = await db`select * from doctors order by name`
+        }
+        return doctors;
+    } catch (error) {
+        console.log(error)
     }
-    return doctors;
 }
 
 
@@ -37,5 +44,19 @@ async function erase(name) {
     }
 }
 
+async function edit(id_doctor, name, speciality, icon) {
+    const hasDoctor = list(name);
+    if(hasDoctor){
+        try {
+            return db`update doctors 
+            set name=${name}, specialty=${speciality}, icon=${icon}
+            where id_doctor = ${id_doctor}
+            `
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+}
 
-export default {list, insert, erase};
+
+export default {list, insert, erase, edit};

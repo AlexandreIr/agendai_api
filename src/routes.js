@@ -6,10 +6,8 @@ const router = Router();
 
 router.get('/doctors', contollerDoctors.list);
 router.post('/doctors', contollerDoctors.insert);
-router.delete('/doctors', (req, res)=>{
-    const {name} = req.params;
-    console.log(name)
-});
+router.delete('/doctors', contollerDoctors.erase);
+router.put('/doctors', contollerDoctors.edit);
 
 
 export default router;

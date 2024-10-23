@@ -15,9 +15,15 @@ async function insert(req, res) {
 }
 
 async function erase(req, res) {
-    const {name} = req.query.name;
+    const {name} = req.query;
 
     return res.json(await serviceDoctors.erase(name));
+};
+
+async function edit(req, res) {
+    const {id_doctor, name, speciality, icon} = req.body;
+
+    return res.json(await serviceDoctors.edit(id_doctor, name, speciality, icon));
 }
 
-export default {list, insert, erase};
+export default {list, insert, erase, edit};

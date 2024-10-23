@@ -15,4 +15,8 @@ async function erase(name) {
     return await repositoryDoctor.erase(name)
 }
 
-export default {list, insert, erase};
+async function edit(id_doctor, name, speciality, icon) {
+    return await repositoryDoctor.edit(id_doctor, name, speciality, icon);
+}
+
+export default {list, insert, erase, edit};
