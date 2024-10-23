@@ -8,9 +8,16 @@ async function list (req, res) {
 }
 
 async function insert(req, res) {
-    const {id_doctor, name, icon, specialty} = req.body;
-    await serviceDoctors.insert({id_doctor, name, icon, specialty});
-    res.json("Médico inserido com sucesso");
+    const {id_doctor ,name, speciality, icon } = req.body;
+
+    const doctor = await serviceDoctors.insert(id_doctor, name ,icon, speciality);
+    res.json(doctor);
 }
 
-export default {list, insert};
+async function erase(req, res) {
+    const {name} = req.query.name;
+
+    return res.json(await serviceDoctors.erase(name));
+}
+
+export default {list, insert, erase};
