@@ -19,10 +19,10 @@ async function list (name) {
 
 
 async function insert(id_doctor, name, specialty, icon) {
-    const doctor = { id_doctor, name, specialty, icon };
+    let doctor
 
     try {
-        await db`
+        doctor = await db`
             INSERT INTO doctors (id_doctor, name, specialty, icon) VALUES (${id_doctor}, ${name}, ${specialty}, ${icon})
         `;
     } catch (err) {

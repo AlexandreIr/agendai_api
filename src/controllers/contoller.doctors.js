@@ -4,7 +4,11 @@ async function list (req, res) {
     const name = req.query.name;
     const doctors = await serviceDoctors.list(name);
 
-    res.json(doctors);
+    res.json(doctors.map(doc=>{
+        return {
+            ...doc, name:`${doc.icon=='male'?'Dr.':'Dra.'} ${doc.name}`
+        }
+    }));
 }
 
 async function insert(req, res) {
