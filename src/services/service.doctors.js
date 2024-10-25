@@ -5,8 +5,8 @@ async function list (name) {
     return doctors;
 };
 
-async function insert(id_doctor,name, icon, speciality) {
-    const doctor = await repositoryDoctor.insert(id_doctor,name, speciality, icon);
+async function insert(name, icon, speciality) {
+    const doctor = await repositoryDoctor.insert(name, speciality, icon);
 
     return doctor;
 };
@@ -19,4 +19,8 @@ async function edit(id_doctor, name, speciality, icon) {
     return await repositoryDoctor.edit(id_doctor, name, speciality, icon);
 }
 
-export default {list, insert, erase, edit};
+async function listServices(name) {
+    return await repositoryDoctor.listServices(name)
+}
+
+export default {list, insert, erase, edit, listServices};

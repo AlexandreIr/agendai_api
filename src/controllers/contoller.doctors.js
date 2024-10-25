@@ -12,9 +12,9 @@ async function list (req, res) {
 }
 
 async function insert(req, res) {
-    const {id_doctor ,name, speciality, icon } = req.body;
+    const {name, speciality, icon } = req.body;
 
-    const doctor = await serviceDoctors.insert(id_doctor, name ,icon, speciality);
+    const doctor = await serviceDoctors.insert( name ,icon, speciality);
     res.json(doctor);
 }
 
@@ -30,4 +30,10 @@ async function edit(req, res) {
     return res.json(await serviceDoctors.edit(id_doctor, name, speciality, icon));
 }
 
-export default {list, insert, erase, edit};
+async function listServices(req, res) {
+    const doctor_name = req.query.name;
+    const services = await serviceDoctors.listServices(doctor_name);
+    
+    return services;
+}
+export default {list, insert, erase, edit, listServices};

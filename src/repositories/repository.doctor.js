@@ -18,12 +18,13 @@ async function list (name) {
 }
 
 
-async function insert(id_doctor, name, specialty, icon) {
+async function insert(name, specialty, icon) {
     let doctor
 
     try {
         doctor = await db`
-            INSERT INTO doctors (id_doctor, name, specialty, icon) VALUES (${id_doctor}, ${name}, ${specialty}, ${icon})
+            INSERT INTO doctors (name, specialty, icon) VALUES (${name}, ${specialty}, ${icon})
+            returning id_doctor
         `;
     } catch (err) {
         console.error('Erro ao inserir no banco de dados:', err);
@@ -58,5 +59,15 @@ async function edit(id_doctor, name, speciality, icon) {
     }
 }
 
+async function listServices(name) {
+    try{
+        const doctor = list(name);
+        const services = db`select * from doctors_services where id_doctor=doctors.${doctor.id_doctor}`;
+        return services;
+    } catch (err){
+        console.log(err.message);
+    }
+}
 
-export default {list, insert, erase, edit};
+
+export default {list, insert, erase, edit, listServices};

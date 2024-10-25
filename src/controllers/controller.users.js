@@ -1,9 +1,9 @@
 import serviceUsers from "../services/service.users.js";
 
 async function insert(req, res) {
-    const { id_user ,name , email, password } = req.body;
+    const { name , email, password } = req.body;
 
-    const user = await serviceUsers.insert(id_user ,name , email, password);
+    const user = await serviceUsers.insert(name , email, password);
     res.json(user);
 }
 
