@@ -3,6 +3,7 @@ import { Router } from "express";
 import contollerDoctors from "./controllers/contoller.doctors.js";
 import controllerUsers from './controllers/controller.users.js';
 import jwt from './token.js';
+import controllerServices from "./controllers/controller.services.js";
 
 const router = Router();
 
@@ -18,6 +19,7 @@ router.post('/users/register', controllerUsers.insert);
 router.post('/users/login', controllerUsers.login);
 
 //services
+router.post('/services/create', jwt.Validate, controllerServices.insert);
 
 
 export default router;
