@@ -18,4 +18,10 @@ async function login(req, res) {
     }
 }
 
-export default{insert, login}
+async function profile(req, res) {
+    const id_user = req.id_user;
+    const user = await serviceUsers.profile(id_user);
+    res.json(user);
+}
+
+export default{insert, login, profile}

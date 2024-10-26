@@ -6,8 +6,10 @@ async function listByUser(req, res) {
     res.json(appointments);
 }
 
+
 async function insert(req, res) {
-    const {id_user, id_doctor, id_service, booking_date, booking_hour} = req.body;
+    const id_user = req.id_user;
+    const {id_doctor, id_service, booking_date, booking_hour} = req.body;
     const appointment = await serviceAppointments.insert(id_user, id_doctor, id_service, booking_date, booking_hour);
     res.json(appointment);
 }

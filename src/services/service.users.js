@@ -27,4 +27,8 @@ async function login(email, password) {
     }
 }
 
-export default {insert, login};
+async function profile(id_user) {
+    return await repositoryUsers.profile(id_user);
+}
+
+export default {insert, login, profile};

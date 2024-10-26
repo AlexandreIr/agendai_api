@@ -18,12 +18,14 @@ router.get('/doctors/:id_doctor/services', jwt.Validate, contollerDoctors.listSe
 //users
 router.post('/users/register', controllerUsers.insert);
 router.post('/users/login', controllerUsers.login);
+router.get('/users/profile', jwt.Validate, controllerUsers.profile);
 
 //services
 router.post('/services/create', jwt.Validate, controllerServices.insert);
 
 //appointments
 router.get('/appointments', jwt.Validate, controllerAppointments.listByUser);
+router.post('/appointments', jwt.Validate, controllerAppointments.insert);
 
 
 export default router;

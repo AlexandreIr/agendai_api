@@ -28,5 +28,9 @@ async function findByEmail(email) {
     }
 }
 
+async function profile(id_user) {
+    return await db `select name, email from users where id_user = ${id_user}`;
+}
 
-export default {insert, findByEmail}
+
+export default {insert, findByEmail, profile}
