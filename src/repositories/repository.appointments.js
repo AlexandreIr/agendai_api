@@ -36,5 +36,16 @@ async function insert(id_user, id_doctor, id_service, booking_date, booking_hour
     return appointment;
 }
 
+async function exclude(id_user, id_appointment) {
+    let appointment
+    try {
+        appointment = await db `delete from appointments
+        where id_user = ${id_user} and id_appointment = ${id_appointment}`;
+    } catch (error) {
+        console.log(error.message);
+    }
+    return {id_appointment};
+}
 
-export default {listByUser, insert};
+
+export default {listByUser, insert, exclude};

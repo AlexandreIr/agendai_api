@@ -26,6 +26,7 @@ router.post('/services/create', jwt.Validate, controllerServices.insert);
 //appointments
 router.get('/appointments', jwt.Validate, controllerAppointments.listByUser);
 router.post('/appointments', jwt.Validate, controllerAppointments.insert);
+router.delete('/appointments/:id_appointment', jwt.Validate, controllerAppointments.exclude);
 
 
 export default router;

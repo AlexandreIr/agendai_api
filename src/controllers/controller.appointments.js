@@ -14,4 +14,11 @@ async function insert(req, res) {
     res.json(appointment);
 }
 
-export default {listByUser, insert}
+async function exclude(req, res) {
+    const id_user = req.id_user;
+    const {id_appointment} = req.params;
+    const appointment = await serviceAppointments.exclude(id_user,id_appointment);
+    res.json(appointment);
+}
+
+export default {listByUser, insert, exclude}
