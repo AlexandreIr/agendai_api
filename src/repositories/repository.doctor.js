@@ -59,14 +59,18 @@ async function edit(id_doctor, name, speciality, icon) {
     }
 }
 
-async function listServices(name) {
+async function listServices(id_doctor) {
+    let services
     try{
-        const doctor = list(name);
-        const services = db`select * from doctors_services where id_doctor=doctors.${doctor.id_doctor}`;
-        return services;
+        services = db`select d.id_service, s.description, d.price 
+        from doctors_services d 
+        join services s on (s.id_service = d.id_service)
+        where d.id_doctor=${id_doctor}
+        order by s.description`;
     } catch (err){
-        console.log(err.message);
+        console.log(err);
     }
+    return services;
 }
 
 

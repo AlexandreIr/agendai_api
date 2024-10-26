@@ -19,8 +19,8 @@ async function edit(id_doctor, name, speciality, icon) {
     return await repositoryDoctor.edit(id_doctor, name, speciality, icon);
 }
 
-async function listServices(name) {
-    return await repositoryDoctor.listServices(name)
+async function listServices(id_doctor) {
+    return await repositoryDoctor.listServices(id_doctor)
 }
 
 export default {list, insert, erase, edit, listServices};

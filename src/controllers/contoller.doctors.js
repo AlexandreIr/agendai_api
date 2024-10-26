@@ -31,9 +31,9 @@ async function edit(req, res) {
 }
 
 async function listServices(req, res) {
-    const doctor_name = req.query.name;
-    const services = await serviceDoctors.listServices(doctor_name);
+    const id_doctor = req.params.id_doctor;
+    const services = await serviceDoctors.listServices(id_doctor);
     
-    return services;
+    res.json(services);
 }
 export default {list, insert, erase, edit, listServices};
