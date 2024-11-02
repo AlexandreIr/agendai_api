@@ -12,4 +12,7 @@ async function exclude(id_user, id_appointment) {
     return await repositoryAppointments.exclude(id_user, id_appointment);
 }
 
-export default {listByUser, insert, exclude};
+async function listAll(at_start, at_end, id_doctor) {
+    return await repositoryAppointments.listAll(at_start, at_end, id_doctor);
+}
+export default {listByUser, insert, exclude, listAll};

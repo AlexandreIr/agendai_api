@@ -23,5 +23,21 @@ async function profile(req, res) {
     const user = await serviceUsers.profile(id_user);
     res.json(user);
 }
+async function insertAdmin(req, res) {
+    const {name, email, password} = req.body;
+    const admin = await serviceUsers.insertAdmin(name, email, password);
+    res.json(admin);
+}
 
-export default{insert, login, profile}
+async function loginAdmin(req, res) {
+    const {email, password} = req.body;
+
+    const login = await serviceUsers.loginAdmin(email,password);
+    if(login.length==0){
+        res.status(401).json({error:'Erro, usuário ou senha errado'});
+    } else {
+        res.status(201).json(login);
+    }
+}
+
+export default{insert, login, profile, insertAdmin, loginAdmin}

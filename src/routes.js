@@ -19,12 +19,15 @@ router.get('/doctors/:id_doctor/services', jwt.Validate, contollerDoctors.listSe
 router.post('/users/register', controllerUsers.insert);
 router.post('/users/login', controllerUsers.login);
 router.get('/users/profile', jwt.Validate, controllerUsers.profile);
+router.post('/admin/login', controllerUsers.loginAdmin);
+router.post('/admin/register', controllerUsers.insertAdmin);
 
 //services
 router.post('/services/create', jwt.Validate, controllerServices.insert);
 
 //appointments
 router.get('/appointments', jwt.Validate, controllerAppointments.listByUser);
+router.get('/admin/appointments', jwt.Validate, controllerAppointments.listAll);
 router.post('/appointments', jwt.Validate, controllerAppointments.insert);
 router.delete('/appointments/:id_appointment', jwt.Validate, controllerAppointments.exclude);
 
