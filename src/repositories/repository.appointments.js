@@ -47,6 +47,15 @@ async function exclude(id_user, id_appointment) {
     return {id_appointment};
 }
 
+async function excludeAdmin(id_appointment) {
+    try {
+        const appointment = await db `delete from appointments
+        where id_appointment = ${id_appointment} returning id_appointment`;
+        return appointment;
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 
 async function listAll(id_admin) {
     try {
@@ -67,4 +76,4 @@ async function listAll(id_admin) {
     }
 }
 
-export default {listByUser, insert, exclude, listAll};
+export default {listByUser, insert, exclude, listAll, excludeAdmin};

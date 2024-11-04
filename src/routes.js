@@ -30,6 +30,7 @@ router.get('/appointments', jwt.Validate, controllerAppointments.listByUser);
 router.get('/admin/appointments', jwt.Validate, controllerAppointments.listAll);
 router.post('/appointments', jwt.Validate, controllerAppointments.insert);
 router.delete('/appointments/:id_appointment', jwt.Validate, controllerAppointments.exclude);
+router.delete('/admin/appointments/:id_appointment', jwt.Validate, controllerAppointments.excludeAdmin);
 
 
 export default router;

@@ -21,10 +21,16 @@ async function exclude(req, res) {
     res.json(appointment);
 }
 
+async function excludeAdmin(req, res) {
+    const {id_appointment} = req.params;
+    const appointment = await serviceAppointments.excludeAdmin(id_appointment);
+    res.json(appointment);
+}
+
 async function listAll(req, res) {
     const {at_start, at_end, id_doctor} = req.query;
     const appointments = await serviceAppointments.listAll(at_start, at_end, id_doctor);
     res.json(appointments);
 }
 
-export default {listByUser, insert, exclude, listAll}
+export default {listByUser, insert, exclude, listAll, excludeAdmin}
