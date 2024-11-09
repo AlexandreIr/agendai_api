@@ -28,7 +28,9 @@ router.post('/services/create', jwt.Validate, controllerServices.insert);
 //appointments
 router.get('/appointments', jwt.Validate, controllerAppointments.listByUser);
 router.get('/admin/appointments', jwt.Validate, controllerAppointments.listAll);
+router.get('/appointment/:id_appointment', jwt.Validate, controllerAppointments.listAppointment);
 router.post('/appointments', jwt.Validate, controllerAppointments.insert);
+// router.put('/appointments', jwt.Validate, controllerAppointments.update);
 router.delete('/appointments/:id_appointment', jwt.Validate, controllerAppointments.exclude);
 router.delete('/admin/appointments/:id_appointment', jwt.Validate, controllerAppointments.excludeAdmin);
 

@@ -76,4 +76,25 @@ async function listAll(id_admin) {
     }
 }
 
-export default {listByUser, insert, exclude, listAll, excludeAdmin};
+async function listAppointment(id_appointment) {
+    try{
+        const appointment = await db `select * from appointments where id_appointment = ${id_appointment}`; 
+        return appointment[0];
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+async function update(id_appointment, id_user, id_doctor, id_service, booking_date, booking_hour) {
+    try{
+        const appointment = await db `update appointments 
+        set id_user = ${id_user}, id_doctor = ${id_doctor}, id_service = ${id_service}, 
+        booking_date = ${booking_date}, booking_hour = ${booking_hour}
+        where id_appointment = ${id_appointment}`; 
+        return appointment;
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export default {listByUser, insert, exclude, listAll, excludeAdmin, listAppointment, update};

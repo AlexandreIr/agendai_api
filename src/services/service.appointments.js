@@ -19,4 +19,12 @@ async function excludeAdmin(id_appointment) {
 async function listAll(at_start, at_end, id_doctor) {
     return await repositoryAppointments.listAll(at_start, at_end, id_doctor);
 }
-export default {listByUser, insert, exclude, listAll, excludeAdmin};
+
+async function listAppointment(id_appointment) {
+    return await repositoryAppointments.listAppointment(id_appointment);
+}
+
+async function update(id_appointment, id_user, id_doctor, id_service, booking_date, booking_hour) {
+    return await repositoryAppointments.update(id_appointment, id_user, id_doctor, id_service, booking_date, booking_hour);
+}
+export default {listByUser, insert, exclude, listAll, excludeAdmin, listAppointment, update};

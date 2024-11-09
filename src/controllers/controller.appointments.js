@@ -33,4 +33,16 @@ async function listAll(req, res) {
     res.json(appointments);
 }
 
-export default {listByUser, insert, exclude, listAll, excludeAdmin}
+async function listAppointment(req, res) {
+    const {id_appointment} = req.params;
+    const appointment = await serviceAppointments.listAppointment(id_appointment);
+    res.json(appointment);
+}
+
+async function update(req, res) {
+    const {id_appointment, id_user, id_doctor, id_service, booking_date, booking_hour} = req.body;
+    const appointment = await serviceAppointments.update(id_appointment, id_user, id_doctor, id_service, booking_date, booking_hour);
+    res.json(appointment);
+}
+
+export default {listByUser, insert, exclude, listAll, excludeAdmin, listAppointment, update};
