@@ -11,8 +11,8 @@ async function insert(name, icon, speciality) {
     return doctor;
 };
 
-async function erase(name) {
-    return await repositoryDoctor.erase(name)
+async function erase(id_doctor) {
+    return await repositoryDoctor.erase(id_doctor)
 }
 
 async function edit(id_doctor, name, speciality, icon) {

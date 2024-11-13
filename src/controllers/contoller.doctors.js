@@ -19,9 +19,9 @@ async function insert(req, res) {
 }
 
 async function erase(req, res) {
-    const {name} = req.query;
+    const {id_doctor} = req.params;
 
-    return res.json(await serviceDoctors.erase(name));
+    return res.json(await serviceDoctors.erase(id_doctor));
 };
 
 async function edit(req, res) {

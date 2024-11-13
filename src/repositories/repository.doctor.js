@@ -33,16 +33,13 @@ async function insert(name, specialty, icon) {
     return doctor;
 }
 
-async function erase(name) {
-    const hasDoctor = list(name)
-    if(hasDoctor){
+async function erase(id_doctor) {
         try{
-            console.log(`Doutor ${name} excluído com sucesso`);
-            return db`delete from doctors where name=${name}`;
+            console.log(`Doutor ${id_doctor} excluído com sucesso`);
+            return db`delete from doctors where id_doctor=${id_doctor}`;
         } catch(err){
             console.log(err.message);
         }
-    }
 }
 
 async function edit(id_doctor, name, speciality, icon) {
