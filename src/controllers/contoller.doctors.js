@@ -1,8 +1,15 @@
 import serviceDoctors from "../services/service.doctors.js";
 
 async function list (req, res) {
-    const name = req.query.name;
-    const doctors = await serviceDoctors.list(name);
+    const {id_doctor} = req.params;
+    // const name = req.query.name;
+    let doctors;
+    if(id_doctor){
+        doctors = await serviceDoctors.list(id_doctor);
+    } else {
+        doctors = await serviceDoctors.list();
+    }
+
 
     res.json(doctors.map(doc=>{
         return {

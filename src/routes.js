@@ -10,6 +10,7 @@ const router = Router();
 
 //doctors
 router.get('/doctors', jwt.Validate,contollerDoctors.list);
+router.get('/doctors/:id_doctor', jwt.Validate,contollerDoctors.list);
 router.post('/doctors', jwt.Validate,contollerDoctors.insert);
 router.delete('/doctors/:id_doctor',jwt.Validate,contollerDoctors.erase);
 router.put('/doctors/:id_doctor', jwt.Validate,contollerDoctors.edit);

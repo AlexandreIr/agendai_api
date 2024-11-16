@@ -1,7 +1,7 @@
 import repositoryDoctor from "../repositories/repository.doctor.js";
 
-async function list (name) {
-    const doctors = await repositoryDoctor.list(name);
+async function list (id_doctor) {
+    const doctors = await repositoryDoctor.list(id_doctor);
     return doctors;
 };
 

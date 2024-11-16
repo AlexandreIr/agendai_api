@@ -1,10 +1,10 @@
 import db from '../database/db.js';
 
-async function list (name) {
+async function list (id_doctor) {
     let doctors;
     try {
-        if(name){
-            doctors = await db`select * from doctors where name like ${"%"+name+"%"} order by name`;
+        if(id_doctor){
+            doctors = await db`select * from doctors where id_doctor = ${id_doctor}`;
             if(doctors.length<1){
                 doctors='Médico não encontrado'
             }
